@@ -9,7 +9,7 @@ int check_password_strength(const char *password) {
     int has_digit = 0;
     int has_upper = 0;
     int has_lower = 0;
-
+    int has_special = 0;
     if (length < 8) {
         return 0;
     }
@@ -18,18 +18,20 @@ int check_password_strength(const char *password) {
         if (password[i] >= '0' && password[i] <= '9') has_digit = 1;
         if (password[i] >= 'A' && password[i] <= 'Z') has_upper = 1;
         if (password[i] >= 'a' && password[i] <= 'z') has_lower = 1;
+        if (ispunct((unsigned char)password[i])) has_special = 1;
     }
 DEBUG_PRINT("Passwort-Länge: %d\n", length);
 DEBUG_PRINT("has_digit=%d, has_upper=%d, has_lower=%d\n",
             has_digit, has_upper, has_lower);
-    return has_digit && has_upper && has_lower;
+    return has_digit && has_upper && has_lower && has_special;
 }
 
 void print_password_requirements(void) {
     printf("Passwort-Anforderungen:\n");
     printf("  - Mindestens 8 Zeichen\n");
     printf("  - Mindestens ein Großbuchstabe\n");
-    printf("  - Mindestens ein Kleinbuchstabe\n");
+    printf("  - Mindestens ein Kleinbuchstabe\n"); 
+    printf("  - Mindestens ein Sonderzeichen\n");
     printf("  - Mindestens eine Ziffer\n");
 }
 
