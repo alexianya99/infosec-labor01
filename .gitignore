@@ -1,0 +1,25 @@
+# Build directories
+build/
+bin/
+
+# Object files
+*.o
+*.a
+*.so
+
+# Debug files
+*.dSYM/
+*.su
+
+# Editor backups
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+labor01_backup.tar.gz
+
